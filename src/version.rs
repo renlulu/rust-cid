@@ -1,6 +1,8 @@
 use {Error, Result};
+use serde::{Serialize, Deserialize};
 
-#[derive(PartialEq, Eq, Clone, Copy, Debug)]
+
+#[derive(PartialEq, Eq, Clone, Copy, Debug, Serialize, Deserialize)]
 pub enum Version {
     V0,
     V1,
@@ -24,7 +26,7 @@ impl Version {
     }
 
     pub fn is_v0_binary(data: &[u8]) -> bool {
-        data.len() == 34 && data.starts_with(&[0x12,0x20])
+        data.len() == 34 && data.starts_with(&[0x12, 0x20])
     }
 }
 

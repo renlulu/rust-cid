@@ -1,8 +1,10 @@
 use {Error, Result};
+use serde::{Serialize, Deserialize};
+
 
 macro_rules! build_codec_enum {
     {$( $val:expr => $var:ident, )*} => {
-        #[derive(PartialEq, Eq, Clone, Copy, Debug)]
+        #[derive(PartialEq, Eq, Clone, Copy, Debug,Serialize, Deserialize)]
         pub enum Codec {
             $( $var, )*
         }

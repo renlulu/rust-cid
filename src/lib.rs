@@ -5,6 +5,11 @@
 extern crate multihash;
 extern crate multibase;
 extern crate integer_encoding;
+#[macro_use]
+extern crate serde_derive;
+extern crate serde;
+
+use serde::{Serialize, Deserialize};
 
 mod to_cid;
 mod error;
@@ -21,7 +26,7 @@ use std::fmt;
 use std::io::Cursor;
 
 /// Representation of a CID.
-#[derive(PartialEq, Eq, Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize)]
 pub struct Cid {
     pub version: Version,
     pub codec: Codec,
